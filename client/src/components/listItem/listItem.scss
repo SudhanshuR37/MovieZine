@@ -6,9 +6,43 @@
     overflow: hidden;
     cursor: pointer;
     color: white;
+
     
     .listItem__itemInfo{
+        display: flex;
+        flex-direction: column;
+        padding: 5px;
         .listItem__itemInfo__icons{
+            display: flex;
+            margin-bottom: 10px;
+            .listItem__itemInfo__icons__icon{
+                border: 2px solid white;
+                padding: 5px;
+                border-radius: 50%;
+                margin-right: 10px;
+                font-size: 16px;
+            }
+        }
+        .listItem__itemInfo__top{
+            display: flex;  
+            align-items: center;
+            margin-bottom: 10px;
+            font-weight: 600;
+            font-size: 14px;
+            color: grey;
+            .limit{
+                border: 1px solid grey;
+                padding: 1px 3px;
+                margin: 0 10px;
+            }
+        }
+        .listItem__itemInfo__desc{
+            font-size: 13px;
+            margin-bottom: 10px;
+        }
+        .listItem__itemInfo__genre{
+            font-size: 14px;
+            color: lightgrey;
         }
     }
     img{
@@ -17,12 +51,25 @@
         object-fit: cover;
     }
 
+    video{
+        width: 100%;
+        height: 140px;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
     &:hover{
         width: 325px;
         height: 300px;
-
+        position: absolute;
+        top: -150px;
+        -webkit-box-shadow: 0px 0px 15px 0px rgba(255,255,255,0.2); 
+box-shadow: 0px 0px 15px 0px rgba(255,255,255,0.2);
         img{
             height: 140px;
         }
+        border-radius: 5px;
     }
 }

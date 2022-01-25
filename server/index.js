@@ -2,25 +2,23 @@ const express = require('express')
 const app = express()
 const port = 8800
 
-const mongoose = require('mongoose')
-const { Schema } = mongoose;
+const authRoute = require('./routes/auth')
 
-// const blogSchema = new Schema({
-//     title: String,
-//     author: String,
-//     body: String,
-//     comments: [{ body: String, date: Date }],
-//     date: { type: Date, default: Date.now },
-//     hidden: Boolean,
-//     meta: {
-//         votes: Number,
-//         favs: Number
-//     }
-// });
+const mongoose = require('mongoose')
+
+const dotenv = require('dotenv');
+dotenv.config();
+
+mongoose.connect(process.env.MONGO_URL)
+    .then(() => console.log("DB Connection Successfull!"))
+    .catch((err) => console.log(err));
 
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+
+app.use(express.json());
+app.use('/server/auth', authRoute);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

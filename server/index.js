@@ -4,6 +4,8 @@ const port = 8800
 
 const authRoute = require('./routes/auth')
 const usersRoute = require('./routes/users')
+const moviesRoute = require('./routes/movies')
+const listsRoute = require('./routes/lists')
 
 const mongoose = require('mongoose')
 
@@ -21,6 +23,8 @@ app.get('/', (req, res) => {
 app.use(express.json());
 app.use('/server/auth', authRoute);
 app.use('/server/users', usersRoute);
+app.use('/server/movies', moviesRoute);
+app.use('/server/lists', listsRoute);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)

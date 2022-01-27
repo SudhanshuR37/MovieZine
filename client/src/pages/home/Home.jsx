@@ -1,10 +1,12 @@
 import './home.scss'
-import React from 'react'
+import React, { useState } from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Featured from '../../components/featured/Featured'
 import List from '../../components/list/List'
 
-const home = ({ type }) => {
+const Home = ({ type }) => {
+    const [lists, setLists] = useState([]);
+
     return (
         <div className="home">
             <Navbar></Navbar>
@@ -17,4 +19,4 @@ const home = ({ type }) => {
     )
 }
 
-export default home
+export default Home

@@ -9,7 +9,7 @@ const Featured = ({ type }) => {
             {
                 type && (
                     <div className='featured__category'>
-                        <span>{type === "movie" ? "Movies" : "TV Shows"}</span>
+                        <span>{type === "movies" ? "Movies" : "TV Shows"}</span>
                         <select name='genre' id='genre'>
                             <option>Genre</option>
                             <option value="adventure">Adventure</option>

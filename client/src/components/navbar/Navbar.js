@@ -9,6 +9,7 @@ import MovieIcon from '@mui/icons-material/Movie';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import AddIcon from '@mui/icons-material/Add';
 import HomeIcon from '@mui/icons-material/Home';
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false)
@@ -22,17 +23,24 @@ const Navbar = () => {
             <div className="navbar__container">
                 <div className="navbar__container__left">
                     <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="MovieZine logo" ></img>
-                    <span>
-                        <HomeIcon></HomeIcon>
-                        Home</span>
-                    <span>
-                        <LiveTvIcon></LiveTvIcon>
-                        TV Shows
-                    </span>
-                    <span>
-                        <MovieIcon></MovieIcon>
-                        Movies
-                    </span>
+                    <Link to="/" className="link">
+                        <span>
+                            <HomeIcon></HomeIcon>
+                            Home
+                        </span>
+                    </Link>
+                    <Link to="/series" className="link">
+                        <span>
+                            <LiveTvIcon></LiveTvIcon>
+                            TV Shows
+                        </span>
+                    </Link>
+                    <Link to="/movies" className="link">
+                        <span>
+                            <MovieIcon></MovieIcon>
+                            Movies
+                        </span>
+                    </Link>
                     <span>
                         <AssignmentTurnedInIcon></AssignmentTurnedInIcon>
                         Recently Added

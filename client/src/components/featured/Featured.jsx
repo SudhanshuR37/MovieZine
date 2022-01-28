@@ -1,15 +1,34 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './featured.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import axios from 'axios';
 
 const Featured = ({ type }) => {
+    const [content, setContent] = useState({});
+
+    useEffect(() => {
+        const getRandomMovies = async () => {
+            try {
+                const res = await axios.get(`/movies/random?type=${type ? type : ""}`, {
+                    headers: {
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzM1NzI2MiwiZXhwIjoxNjQzNzg5MjYyfQ.RL4nkOkAqZTXAjXVulmb7DO8-oTUo08OUxOkGsdLD-4"
+                    }
+                });
+                setContent(res.data[0]);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getRandomMovies();
+    }, [type])
+
     return (
         <div className='featured'>
             {
                 type && (
                     <div className='featured__category'>
-                        <span>{type === "movies" ? "Movies" : "TV Shows"}</span>
+                        <span>{type === "movie" ? "Movies" : "TV Shows"}</span>
                         <select name='genre' id='genre'>
                             <option>Genre</option>
                             <option value="adventure">Adventure</option>
@@ -29,11 +48,11 @@ const Featured = ({ type }) => {
                     </div>
                 )
             }
-            <img src="http://images5.fanpop.com/image/photos/27900000/the-great-trio-naruto-27967647-900-350.jpg" alt="Featured Series/Movie"></img>
+            <img src={content.img} alt="Featured Series/Movie"></img>
             <div className='featured__info'>
-                <img src={process.env.PUBLIC_URL + '/images/Naruto logo.png'} alt="Featured Series/Movie Logo"></img>
+                <img src={content.imgTitle} alt="Featured Series/Movie Logo"></img>
                 <span className='featured__info__description'>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam viverra felis tempus, malesuada magna eget, varius velit. Donec tincidunt urna in velit blandit, sit amet mattis turpis auctor. Aliquam luctus suscipit massa, a dapibus quam. Curabitur cursus libero lorem, ac efficitur libero varius quis. Etiam cursus ante at ex rhoncus cursus. Duis lacinia quam lacus, a faucibus diam luctus et. Duis ut ipsum a turpis pellentesque posuere id vitae sapien. Curabitur aliquet vehicula dignissim.
+                    {content.description}
                 </span>
                 <div className='featured__info__buttons'>
                     <button className='featured__info__buttons__play'>

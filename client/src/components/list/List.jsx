@@ -4,7 +4,7 @@ import ArrowBackIosNewOutlinedIcon from '@mui/icons-material/ArrowBackIosNewOutl
 import ArrowForwardIosOutlinedIcon from '@mui/icons-material/ArrowForwardIosOutlined';
 import ListItem from '../listItem/ListItem';
 
-const List = ({ listTitle }) => {
+const List = ({ list }) => {
     const [slideNumber, setSlideNumber] = useState(0)
     const [isMoved, setIsMoved] = useState(false)
     const listRef = useRef()
@@ -24,20 +24,15 @@ const List = ({ listTitle }) => {
 
     return (
         <div className='list'>
-            <span className='list__listTitle'>{listTitle}</span>
+            <span className='list__listTitle'>{list.title}</span>
             <div className='list__wrapper'>
                 <ArrowBackIosNewOutlinedIcon className='list__wrapper__sliderArrow left' onClick={() => handleClick("left")} style={{ display: !isMoved && "none" }}></ArrowBackIosNewOutlinedIcon>
                 <div className='list__wrapper__container' ref={listRef}>
-                    <ListItem index={0}></ListItem>
-                    <ListItem index={1}></ListItem>
-                    <ListItem index={2}></ListItem>
-                    <ListItem index={3}></ListItem>
-                    <ListItem index={4}></ListItem>
-                    <ListItem index={5}></ListItem>
-                    <ListItem index={6}></ListItem>
-                    <ListItem index={7}></ListItem>
-                    <ListItem index={8}></ListItem>
-                    <ListItem index={9}></ListItem>
+                    {
+                        list.content.map((item, i) => (
+                            <ListItem index={i} item={item}></ListItem>
+                        ))
+                    }
                 </div>
                 <ArrowForwardIosOutlinedIcon className='list__wrapper__sliderArrow right' onClick={() => handleClick("right")}></ArrowForwardIosOutlinedIcon>
             </div>

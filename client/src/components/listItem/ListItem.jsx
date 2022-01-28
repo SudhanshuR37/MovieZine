@@ -4,36 +4,57 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpOutlinedIcon from '@mui/icons-material/ThumbUpOutlined';
 import ThumbDownOutlinedIcon from '@mui/icons-material/ThumbDownOutlined';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
-const ListItem = ({ index }) => {
+const ListItem = ({ index, item }) => {
     const [isHovered, setIsHovered] = useState(false);
-    const trailer = "https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd273d2c6d9a064f3ae35579b2bbdf&profile_id=139&oauth2_token_id=57447761"
+    const [movie, setMovie] = useState({});
+
+    useEffect(() => {
+        const getMovies = async () => {
+            try {
+                const res = await axios.get("/movies/find/" + item, {
+                    headers: {
+                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzM1NzI2MiwiZXhwIjoxNjQzNzg5MjYyfQ.RL4nkOkAqZTXAjXVulmb7DO8-oTUo08OUxOkGsdLD-4"
+                    },
+                });
+                setMovie(res.data);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        getMovies();
+    }, [item]);
+
     return (
-        <div className='listItem' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}>
-            <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ92vx-H4_mDQlxj--Mtlx5RWio-kOC9xQSSA&usqp=CAU' alt=''></img>
-            {isHovered && (
-                <>
-                    <video src={trailer} autoPlay={true} loop></video>
-                    <div className='listItem__itemInfo'>
-                        <div className='listItem__itemInfo__icons'>
-                            <PlayArrowIcon className='listItem__itemInfo__icons__icon'></PlayArrowIcon>
-                            <AddIcon className='listItem__itemInfo__icons__icon'></AddIcon>
-                            <ThumbUpOutlinedIcon className='listItem__itemInfo__icons__icon'></ThumbUpOutlinedIcon>
-                            <ThumbDownOutlinedIcon className='listItem__itemInfo__icons__icon'></ThumbDownOutlinedIcon>
+        <Link to='/watch' state={movie} >
+            <div className='listItem' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}>
+                <img src={movie.img} alt=''></img>
+                {isHovered && (
+                    <>
+                        <video src={movie.trailer} autoPlay={true} loop></video>
+                        <div className='listItem__itemInfo'>
+                            <div className='listItem__itemInfo__icons'>
+                                <PlayArrowIcon className='listItem__itemInfo__icons__icon'></PlayArrowIcon>
+                                <AddIcon className='listItem__itemInfo__icons__icon'></AddIcon>
+                                <ThumbUpOutlinedIcon className='listItem__itemInfo__icons__icon'></ThumbUpOutlinedIcon>
+                                <ThumbDownOutlinedIcon className='listItem__itemInfo__icons__icon'></ThumbDownOutlinedIcon>
+                            </div>
+                            <div className='listItem__itemInfo__top'>
+                                <span>{movie.duration}</span>
+                                <span className='limit'>+{movie.limit}</span>
+                                <span>{movie.year}</span>
+                            </div>
+                            <div className='listItem__itemInfo__desc'>
+                                {movie.description}
+                            </div>
+                            <div className='listItem__itemInfo__genre'>{movie.genre}</div>
                         </div>
-                        <div className='listItem__itemInfo__top'>
-                            <span>1 hour 40 mins</span>
-                            <span className='limit'>+16</span>
-                            <span>2019</span>
-                        </div>
-                        <div className='listItem__itemInfo__desc'>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                        </div>
-                        <div className='listItem__itemInfo__genre'>Action</div>
-                    </div>
-                </>
-            )}
-        </div>
+                    </>
+                )}
+            </div>
+        </Link>
     )
 }
 

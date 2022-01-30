@@ -1,9 +1,9 @@
 import React from 'react';
-import './userList'
+import './userList.css'
 
 const UserList = () => {
     return <div className='userList'>
-
+        userList
     </div>;
 };
 

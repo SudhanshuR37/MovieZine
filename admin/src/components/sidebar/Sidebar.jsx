@@ -11,6 +11,7 @@ import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import BarChartIcon from '@mui/icons-material/BarChart';
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
 const Sidebar = () => {
     return <div className='sidebar'>
@@ -18,10 +19,12 @@ const Sidebar = () => {
             <div className='sidebar__wrapper__menu'>
                 <h3 className='sidebar__wrapper__menu__title'>Dashboard</h3>
                 <ul className='sidebar__wrapper__menu__list'>
-                    <li className='sidebar__wrapper__menu__list__listItem'>
-                        <HomeIcon className='sidebar__wrapper__menu__list__listItem__sideIcon active'></HomeIcon>
-                        Home
-                    </li>
+                    <Link to="/">
+                        <li className='sidebar__wrapper__menu__list__listItem'>
+                            <HomeIcon className='sidebar__wrapper__menu__list__listItem__sideIcon active'></HomeIcon>
+                            Home
+                        </li>
+                    </Link>
                     <li className='sidebar__wrapper__menu__list__listItem'>
                         <AnalyticsIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AnalyticsIcon>
                         Analytics
@@ -35,10 +38,12 @@ const Sidebar = () => {
             <div className='sidebar__wrapper__menu'>
                 <h3 className='sidebar__wrapper__menu__title'>Quick Menu</h3>
                 <ul className='sidebar__wrapper__menu__list'>
-                    <li className='sidebar__wrapper__menu__list__listItem'>
-                        <PersonOutlineIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></PersonOutlineIcon>
-                        Users
-                    </li>
+                    <Link to="/users">
+                        <li className='sidebar__wrapper__menu__list__listItem'>
+                            <PersonOutlineIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></PersonOutlineIcon>
+                            Users
+                        </li>
+                    </Link>
                     <li className='sidebar__wrapper__menu__list__listItem'>
                         <AnalyticsIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AnalyticsIcon>
                         Products

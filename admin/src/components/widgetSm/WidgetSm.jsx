@@ -51,7 +51,7 @@ const WidgetSm = () => {
                 </button>
             </li>
             <li className='widgetSm__list__listItem'>
-                <img src='https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo' alt='' className='widgetSm__list__listItem__image' ></img>
+                <img src='https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo' alt='Profile Pic' className='widgetSm__list__listItem__image' ></img>
                 <div className='widgetSm__list__listItem__user'>
                     <span className='widgetSm__list__listItem__user__username'>Anna Keller</span>
                     <span className='widgetSm__list__listItem__user__userTitle'>Software Engineer</span>

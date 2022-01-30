@@ -1,0 +1,71 @@
+.user{
+    flex: 4;
+    padding: 20px;   
+}
+
+.user__titleContainer{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user__titleContainer_title{
+
+}
+
+.user__titleContainer__button{
+    width: 80px;
+    border: none;
+    background-color: teal;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px;
+    font-size: 16px;
+}
+
+.user__container{
+    display: flex;
+    margin-top: 20px;
+}
+
+.user__container__userShow{
+    flex: 1;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 11px -1px #000000; 
+    box-shadow: 0px 0px 11px -1px #000000;
+}
+
+.user__container__userShow__top{
+    display: flex;
+    align-items: center;
+}
+
+.user__container__userShow__top__image{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.user__container__userShow__top__user{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+
+.user__container__userShow__top__user__username{
+    font-weight: 600;
+}
+
+.user__container__userShow__top__user__userTitle{
+    font-weight: 300;
+}
+
+.user__container__userUpdate{
+    flex: 2;
+    padding: 20px;
+    -webkit-box-shadow: 0px 0px 11px -1px #000000; 
+    box-shadow: 0px 0px 11px -1px #000000;
+    margin-left: 20px;
+}

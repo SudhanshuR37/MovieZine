@@ -48,3 +48,15 @@ export const userData = [
         "Active Users": 4005,
     },
 ];
+
+export const userRows = [
+    { id: 1, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 2, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 3, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 4, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 5, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 6, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 7, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 8, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+    { id: 9, username: 'Jon Snow', avatar: 'https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo', email: 'jon@gmail.com', status: 'active', transaction: '$120.00', action: 'Edit' },
+];

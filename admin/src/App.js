@@ -9,11 +9,15 @@ import NewUser from './pages/newUser/NewUser';
 import ProductList from './pages/productList/ProductList';
 import Product from './pages/product/Product';
 import NewProduct from './pages/newProduct/NewProduct';
+import Login from './pages/login/Login';
 
 function App() {
 
   return (
     <Router>
+      <Routes>
+        <Route path="/login" element={<Login></Login>} />
+      </Routes>
       <Topbar></Topbar>
       <div className='App__container'>
         <Sidebar></Sidebar>

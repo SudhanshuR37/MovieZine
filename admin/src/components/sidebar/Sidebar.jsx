@@ -12,6 +12,7 @@ import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 const Sidebar = () => {
     return <div className='sidebar'>
@@ -44,10 +45,10 @@ const Sidebar = () => {
                             Users
                         </li>
                     </Link>
-                    <Link to="/products" className='link'>
+                    <Link to="/movies" className='link'>
                         <li className='sidebar__wrapper__menu__list__listItem'>
-                            <AnalyticsIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AnalyticsIcon>
-                            Products
+                            <PlayCircleOutlineIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></PlayCircleOutlineIcon>
+                            Movies
                         </li>
                     </Link>
                     <li className='sidebar__wrapper__menu__list__listItem'>

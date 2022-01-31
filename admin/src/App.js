@@ -9,9 +9,30 @@ import NewUser from './pages/newUser/NewUser';
 import ProductList from './pages/productList/ProductList';
 import Product from './pages/product/Product';
 import NewProduct from './pages/newProduct/NewProduct';
+import { useEffect, useState } from 'react';
+const axios = require('axios');
 
 function App() {
-  const monthsArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+  const [userStats, setUserStats] = useState([]);
+
+  useEffect(() => {
+    const getStats = async () => {
+      try {
+        const res = await axios.get('http://localhost:8800/server/users/stats', {
+          headers: {
+            token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzYyMjU2MywiZXhwIjoxNjQ0MDU0NTYzfQ.hWvINsccSg2uxTlRmLi5y-FDYYcpxh4xxFkrfCWrawQ",
+          },
+        });
+        setUserStats(res.data);
+      } catch (err) {
+        console.log(err);
+      }
+    }
+    getStats();
+  }, []);
+
+  console.log(userStats)
   return (
     <Router>
       <Topbar></Topbar>

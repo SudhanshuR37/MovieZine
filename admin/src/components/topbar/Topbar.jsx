@@ -3,13 +3,16 @@ import './topbar.css'
 import NotificationsNoneOutlinedIcon from '@mui/icons-material/NotificationsNoneOutlined';
 import LanguageIcon from '@mui/icons-material/Language';
 import SettingsIcon from '@mui/icons-material/Settings';
+import { Link } from 'react-router-dom';
 
 const Topbar = () => {
     return <div className='topbar'>
         <div className='topbar__wrapper'>
-            <div className='topbar__wrapper__topLeft'>
-                <span className='topbar__wrapper__topLeft__logo'>sr_admin</span>
-            </div>
+            <Link to="/" className='link'>
+                <div className='topbar__wrapper__topLeft'>
+                    <span className='topbar__wrapper__topLeft__logo'>sr_admin</span>
+                </div>
+            </Link>
             <div className='topbar__wrapper__topRight'>
                 <div className='topbar__wrapper__topRight__iconContainer'>
                     <NotificationsNoneOutlinedIcon></NotificationsNoneOutlinedIcon>

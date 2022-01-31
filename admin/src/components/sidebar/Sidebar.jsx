@@ -19,7 +19,7 @@ const Sidebar = () => {
             <div className='sidebar__wrapper__menu'>
                 <h3 className='sidebar__wrapper__menu__title'>Dashboard</h3>
                 <ul className='sidebar__wrapper__menu__list'>
-                    <Link to="/">
+                    <Link to="/" className='link'>
                         <li className='sidebar__wrapper__menu__list__listItem'>
                             <HomeIcon className='sidebar__wrapper__menu__list__listItem__sideIcon active'></HomeIcon>
                             Home
@@ -38,16 +38,18 @@ const Sidebar = () => {
             <div className='sidebar__wrapper__menu'>
                 <h3 className='sidebar__wrapper__menu__title'>Quick Menu</h3>
                 <ul className='sidebar__wrapper__menu__list'>
-                    <Link to="/users">
+                    <Link to="/users" className='link'>
                         <li className='sidebar__wrapper__menu__list__listItem'>
                             <PersonOutlineIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></PersonOutlineIcon>
                             Users
                         </li>
                     </Link>
-                    <li className='sidebar__wrapper__menu__list__listItem'>
-                        <AnalyticsIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AnalyticsIcon>
-                        Products
-                    </li>
+                    <Link to="/products" className='link'>
+                        <li className='sidebar__wrapper__menu__list__listItem'>
+                            <AnalyticsIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AnalyticsIcon>
+                            Products
+                        </li>
+                    </Link>
                     <li className='sidebar__wrapper__menu__list__listItem'>
                         <AttachMoneyIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AttachMoneyIcon>
                         Transactions

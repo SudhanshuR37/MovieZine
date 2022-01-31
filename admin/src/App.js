@@ -11,6 +11,7 @@ import Product from './pages/product/Product';
 import NewProduct from './pages/newProduct/NewProduct';
 
 function App() {
+  const monthsArray = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
   return (
     <Router>
       <Topbar></Topbar>

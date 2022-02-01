@@ -1,7 +1,9 @@
 import "./newProduct.css";
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { storage } from "../../firebase";
 import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+import { createMovie } from "../../context/movieContext/apiCalls";
+import { MovieContext } from "../../context/movieContext/MovieContext";
 
 export default function NewProduct() {
     const [movie, setMovie] = useState({});
@@ -12,6 +14,8 @@ export default function NewProduct() {
     const [video, setVideo] = useState(null);
     const [uploaded, setUploaded] = useState(0);
 
+    const { dispatch } = useContext(MovieContext);
+
     const handleChange = (e) => {
         const value = e.target.value;
         setMovie({ ...movie, [e.target.name]: value });
@@ -19,7 +23,8 @@ export default function NewProduct() {
 
     const upload = (items) => {
         items.forEach(item => {
-            const storageRef = ref(storage, `/items/${item.file.name}`);
+            const fileName = new Date().getTime() + item.label + item.file.name;
+            const storageRef = ref(storage, `/items/${fileName}`);
             const uploadTask = uploadBytesResumable(storageRef, item.file);
 
             uploadTask.on('state_changed',
@@ -61,7 +66,10 @@ export default function NewProduct() {
         ]);
     }
 
-    console.log(movie);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        createMovie(movie, dispatch);
+    }
     return (
         <div className="newProduct">
             <h1 className="addProductTitle">New Movie</h1>
@@ -118,7 +126,7 @@ export default function NewProduct() {
                     <input type="file" name="video" onChange={(e) => setVideo(e.target.files[0])} />
                 </div>
                 {
-                    uploaded === 5 ? <button className="addProductButton">Create</button> : <button className="addProductButton" onClick={handleUpload}>Upload</button>
+                    uploaded === 5 ? <button className="addProductButton" onClick={handleSubmit}>Create</button> : <button className="addProductButton" onClick={handleUpload}>Upload</button>
                 }
             </form>
         </div>

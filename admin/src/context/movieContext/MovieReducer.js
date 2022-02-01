@@ -48,6 +48,30 @@ const MovieReducer = (state, action) => {
             }
             break;
 
+        case "CREATE_MOVIE_START":
+            return {
+                ...state,
+                isFetching: true,
+                error: false
+            }
+            break;
+
+        case "CREATE_MOVIE_SUCCESS":
+            return {
+                movies: [...state.movies, action.payload],
+                isFetching: false,
+                error: false
+            }
+            break;
+
+        case "CREATE_MOVIE_FAILURE":
+            return {
+                ...state,
+                isFetching: false,
+                error: true
+            }
+            break;
+
         default:
             return { ...state };
             break;

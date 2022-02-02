@@ -74,7 +74,7 @@ export default function Product() {
         e.preventDefault();
         updateMovie(updatedMovie, dispatch);
     }
-    console.log(updatedMovie);
+
     return (
         <div className="product">
             <div className="productTitleContainer">

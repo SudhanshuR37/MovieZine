@@ -28,7 +28,7 @@ export default function ListList() {
             renderCell: (params) => {
                 return (
                     <>
-                        <Link to={"/product/" + params.row._id} state={params.row}>
+                        <Link to={"/list/" + params.row._id} state={params.row}>
                             <button className="productListEdit">Edit</button>
                         </Link>
                         <DeleteOutline

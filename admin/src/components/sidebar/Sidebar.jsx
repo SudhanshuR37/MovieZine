@@ -9,7 +9,7 @@ import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import DynamicFeedIcon from '@mui/icons-material/DynamicFeed';
 import ChatBubbleOutlineIcon from '@mui/icons-material/ChatBubbleOutline';
-import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import ListIcon from '@mui/icons-material/List';
 import BarChartIcon from '@mui/icons-material/BarChart';
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
@@ -51,10 +51,12 @@ const Sidebar = () => {
                             Movies
                         </li>
                     </Link>
-                    <li className='sidebar__wrapper__menu__list__listItem'>
-                        <AttachMoneyIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></AttachMoneyIcon>
-                        Transactions
-                    </li>
+                    <Link to="/lists" className='link'>
+                        <li className='sidebar__wrapper__menu__list__listItem'>
+                            <ListIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></ListIcon>
+                            Lists
+                        </li>
+                    </Link>
                     <li className='sidebar__wrapper__menu__list__listItem'>
                         <BarChartIcon className='sidebar__wrapper__menu__list__listItem__sideIcon'></BarChartIcon>
                         Reports

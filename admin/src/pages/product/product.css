@@ -102,6 +102,8 @@
   
   .productFormLeft >select{
     margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
   }
   
   .productUploadImg{
@@ -130,5 +132,9 @@
     background-color: darkblue;
     color:white;
     font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .publish_icon{
     cursor: pointer;
   }

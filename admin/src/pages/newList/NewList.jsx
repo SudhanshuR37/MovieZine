@@ -1,13 +1,16 @@
 import "./newList.css";
 import { useState, useContext, useEffect } from "react";
-import { storage } from "../../firebase";
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
+// import { storage } from "../../firebase";
+// import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import { createMovie, getMovies } from "../../context/movieContext/apiCalls";
 import { ListContext } from "../../context/listContext/ListContext";
 import { MovieContext } from "../../context/movieContext/MovieContext";
+import { createList } from "../../context/listContext/apiCalls";
+import { useNavigate } from 'react-router-dom';
 
 export default function NewList() {
     const [list, setList] = useState(null);
+    const navigate = useNavigate();
 
     const { dispatch } = useContext(ListContext);
     const { movies, dispatch: dispatchMovie } = useContext(MovieContext);
@@ -25,7 +28,7 @@ export default function NewList() {
         let value = Array.from(e.target.selectedOptions, (option) => option.value);
         setList({ ...list, [e.target.name]: value })
     }
-    console.log(list);
+    // console.log(list);
     // const upload = (items) => {
     //     items.forEach(item => {
     //         const fileName = new Date().getTime() + item.label + item.file.name;
@@ -73,21 +76,21 @@ export default function NewList() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-
+        createList(list, dispatch);
+        navigate('/lists')
     }
     return (
         <div className="newProduct">
-            <h1 className="addProductTitle">New Movie</h1>
+            <h1 className="addProductTitle">New List</h1>
             <form className="addProductForm">
                 <div className="formLeft">
-
                     <div className="addProductItem">
                         <label>Title</label>
-                        <input type="text" placeholder="John Wick" name="title" onChange={handleChange} />
+                        <input type="text" placeholder="Popular Movies" name="title" onChange={handleChange} />
                     </div>
                     <div className="addProductItem">
                         <label>Genre</label>
-                        <input type="text" placeholder="genre" name="genre" onChange={handleChange} />
+                        <input type="text" placeholder="Action" name="genre" onChange={handleChange} />
                     </div>
                     <div className="addProductItem">
                         <label>Type</label>
@@ -111,7 +114,7 @@ export default function NewList() {
                     </div>
                 </div>
 
-                <button className="addProductButton" >Upload</button>
+                <button className="addProductButton" onClick={handleSubmit}>Create</button>
 
             </form>
         </div>

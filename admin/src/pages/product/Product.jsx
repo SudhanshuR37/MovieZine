@@ -11,7 +11,7 @@ export default function Product() {
     const location = useLocation();
     const movie = location.state;
 
-    const [updatedMovie, setUpdatedMMovie] = useState(movie);
+    const [updatedMovie, setUpdatedMovie] = useState(movie);
     const [img, setImg] = useState(movie.img);
     const [imgTitle, setImgTitle] = useState(movie.imgTitle);
     const [imgThumbnail, setImgThumbnail] = useState(movie.imgThumbnail);
@@ -22,7 +22,7 @@ export default function Product() {
     const { dispatch } = useContext(MovieContext);
     const handleChange = (e) => {
         const value = e.target.value;
-        setUpdatedMMovie({ ...updatedMovie, [e.target.name]: value });
+        setUpdatedMovie({ ...updatedMovie, [e.target.name]: value });
     }
 
     const upload = (items) => {
@@ -49,7 +49,7 @@ export default function Product() {
                 },
                 () => {
                     getDownloadURL(uploadTask.snapshot.ref).then((downloadURL) => {
-                        setUpdatedMMovie(prev => {
+                        setUpdatedMovie(prev => {
                             return { ...prev, [item.label]: downloadURL };
                         })
                         setUploaded(prev => prev + 1);

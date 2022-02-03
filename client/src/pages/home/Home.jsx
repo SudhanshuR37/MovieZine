@@ -1,5 +1,5 @@
 import './home.scss'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import Navbar from '../../components/navbar/Navbar'
 import Featured from '../../components/featured/Featured'
 import List from '../../components/list/List'
@@ -12,12 +12,12 @@ const Home = ({ type }) => {
     useEffect(() => {
         const getRandomLists = async () => {
             try {
-                const res = await axios.get(`http://localhost:8800/server/lists?type=${type ? type : ""}${genre ? "&genre=" + genre : ""}`, {
+                const res = await axios.get(`http://localhost:8800/server/lists${type ? "?type=" + type : ""}${genre ? "&genre=" + genre : ""}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzcwMjYwNCwiZXhwIjoxNjQ0MTM0NjA0fQ.rj-XDhso_j8o20AhMbG4kZn2AdSo0GOb0CA3jTY9hcw"
-                    }
+                        token:
+                            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+                    },
                 });
-                console.log(lists);
                 setLists(res.data);
             } catch (err) {
                 console.log(err);
@@ -29,7 +29,7 @@ const Home = ({ type }) => {
     return (
         <div className="home">
             <Navbar></Navbar>
-            <Featured type={type}></Featured>
+            <Featured type={type} setGenre={setGenre}></Featured>
             {
                 lists.map((list) => (
                     <List list={list}></List>

@@ -16,7 +16,8 @@ const ListItem = ({ index, item }) => {
             try {
                 const res = await axios.get("http://localhost:8800/server/movies/find/" + item, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzcwMjYwNCwiZXhwIjoxNjQ0MTM0NjA0fQ.rj-XDhso_j8o20AhMbG4kZn2AdSo0GOb0CA3jTY9hcw"
+                        token:
+                            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
                     },
                 });
                 setMovie(res.data);
@@ -30,10 +31,10 @@ const ListItem = ({ index, item }) => {
     return (
         <Link to='/watch' state={movie} >
             <div className='listItem' onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)} style={{ left: isHovered && index * 225 - 50 + index * 2.5 }}>
-                <img src={movie.img} alt=''></img>
+                <img src={movie?.imgThumbnail} alt=''></img>
                 {isHovered && (
                     <>
-                        <video src={movie.trailer} autoPlay={true} loop></video>
+                        <video src={movie?.trailer} autoPlay={true} loop></video>
                         <div className='listItem__itemInfo'>
                             <div className='listItem__itemInfo__icons'>
                                 <PlayArrowIcon className='listItem__itemInfo__icons__icon'></PlayArrowIcon>
@@ -42,14 +43,14 @@ const ListItem = ({ index, item }) => {
                                 <ThumbDownOutlinedIcon className='listItem__itemInfo__icons__icon'></ThumbDownOutlinedIcon>
                             </div>
                             <div className='listItem__itemInfo__top'>
-                                <span>{movie.duration}</span>
-                                <span className='limit'>+{movie.limit}</span>
-                                <span>{movie.year}</span>
+                                <span>{movie?.duration}</span>
+                                <span className='limit'>+{movie?.limit}</span>
+                                <span>{movie?.year}</span>
                             </div>
                             <div className='listItem__itemInfo__desc'>
-                                {movie.description}
+                                {movie?.description}
                             </div>
-                            <div className='listItem__itemInfo__genre'>{movie.genre}</div>
+                            <div className='listItem__itemInfo__genre'>{movie?.genre}</div>
                         </div>
                     </>
                 )}

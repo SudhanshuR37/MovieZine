@@ -1,21 +1,21 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import './featured.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import axios from 'axios';
 
-const Featured = ({ type }) => {
+const Featured = ({ type, setGenre }) => {
     const [content, setContent] = useState({});
 
     useEffect(() => {
         const getRandomMovies = async () => {
             try {
-                const res = await axios.get(`http://localhost:8800/server/movies/random?type=${type ? type : ""}`, {
+                const res = await axios.get(`http://localhost:8800/server/movies/random?type=${type}`, {
                     headers: {
-                        token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzcwMjYwNCwiZXhwIjoxNjQ0MTM0NjA0fQ.rj-XDhso_j8o20AhMbG4kZn2AdSo0GOb0CA3jTY9hcw"
-                    }
+                        token:
+                            "Bearer " + JSON.parse(localStorage.getItem("user")).accessToken,
+                    },
                 });
-                console.log(res.data);
                 setContent(res.data[0]);
             } catch (err) {
                 console.log(err);
@@ -23,14 +23,13 @@ const Featured = ({ type }) => {
         }
         getRandomMovies();
     }, [type])
-
     return (
         <div className='featured'>
             {
                 type && (
                     <div className='featured__category'>
-                        <span>{type === "movie" ? "Movies" : "TV Shows"}</span>
-                        <select name='genre' id='genre'>
+                        <span>{type === "movies" ? "Movies" : "TV Shows"}</span>
+                        <select name='genre' id='genre' onChange={(e) => setGenre(e.target.value)}>
                             <option>Genre</option>
                             <option value="adventure">Adventure</option>
                             <option value="comedy">Comedy</option>
@@ -49,11 +48,11 @@ const Featured = ({ type }) => {
                     </div>
                 )
             }
-            {/* <img src={content.img} alt="Featured Series/Movie"></img> */}
+            <img src={content?.img} alt=""></img>
             <div className='featured__info'>
-                <img src={content.imgTitle} alt="Featured Series/Movie Logo"></img>
+                <img src={content?.imgTitle} alt=""></img>
                 <span className='featured__info__description'>
-                    {content.description}
+                    {content?.description}
                 </span>
                 <div className='featured__info__buttons'>
                     <button className='featured__info__buttons__play'>

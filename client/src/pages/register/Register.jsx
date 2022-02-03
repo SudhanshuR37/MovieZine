@@ -29,12 +29,13 @@ const Register = () => {
         }
     }
 
+
     return (
         <div className='register'>
             <div className='register__top'>
                 <div className='register__top__wrapper'>
                     <img className='register__top__wrapper__logo' src={process.env.PUBLIC_URL + '/images/logo.png'} alt="MovieZine logo" ></img>
-                    <button className='register__top__wrapper__logo__signInButton'>Sign In</button>
+                    <button className='register__top__wrapper__logo__signInButton' onClick={() => navigate('/login')}>Sign In</button>
                 </div>
             </div>
             <div className='register__container'>

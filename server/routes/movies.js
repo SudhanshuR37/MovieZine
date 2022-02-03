@@ -77,6 +77,7 @@ router.get('/random', verify, async (req, res) => {
     }
 })
 
+
 //Get all
 router.get('/find', verify, async (req, res) => {
     if (req.user.isAdmin) {

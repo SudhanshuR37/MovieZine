@@ -10,11 +10,12 @@ const Featured = ({ type }) => {
     useEffect(() => {
         const getRandomMovies = async () => {
             try {
-                const res = await axios.get(`/movies/random?type=${type ? type : ""}`, {
+                const res = await axios.get(`http://localhost:8800/server/movies/random?type=${type ? type : ""}`, {
                     headers: {
                         token: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZjE0ZGEyNTY1ZTU1NDI0YmYxZmQwNyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0MzcwMjYwNCwiZXhwIjoxNjQ0MTM0NjA0fQ.rj-XDhso_j8o20AhMbG4kZn2AdSo0GOb0CA3jTY9hcw"
                     }
                 });
+                console.log(res.data);
                 setContent(res.data[0]);
             } catch (err) {
                 console.log(err);
@@ -48,7 +49,7 @@ const Featured = ({ type }) => {
                     </div>
                 )
             }
-            <img src={content.img} alt="Featured Series/Movie"></img>
+            {/* <img src={content.img} alt="Featured Series/Movie"></img> */}
             <div className='featured__info'>
                 <img src={content.imgTitle} alt="Featured Series/Movie Logo"></img>
                 <span className='featured__info__description'>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import './navbar.scss'
 import SearchIcon from '@mui/icons-material/Search';
 import CardGiftcardIcon from '@mui/icons-material/CardGiftcard';
@@ -10,9 +10,12 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import AddIcon from '@mui/icons-material/Add';
 import HomeIcon from '@mui/icons-material/Home';
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../authContext/AuthContext";
+import { logout } from "../../authContext/AuthAction";
 
 const Navbar = () => {
-    const [isScrolled, setIsScrolled] = useState(false)
+    const [isScrolled, setIsScrolled] = useState(false);
+    const { dispatch } = useContext(AuthContext);
 
     window.onscroll = () => {
         setIsScrolled(window.scrollY === 0 ? false : true)
@@ -60,7 +63,7 @@ const Navbar = () => {
                         <ArrowDropDownIcon className="navbar__container__right__icon"></ArrowDropDownIcon>
                         <div className="navbar__container__right__profile__options">
                             <span>Settings</span>
-                            <span>Log Out</span>
+                            <span onClick={() => dispatch(logout())}>Log Out</span>
                         </div>
                     </div>
                 </div>

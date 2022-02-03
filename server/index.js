@@ -4,7 +4,7 @@ const port = 8800
 
 const cors = require('cors');
 const corsOptions = {
-    origin: 'http://localhost:4000',
+    origin: ['http://localhost:4000', 'http://localhost:3000'],
     credentials: true,
     optionSuccessStatus: 200
 }

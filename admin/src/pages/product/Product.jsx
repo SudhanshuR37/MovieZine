@@ -6,10 +6,12 @@ import { getStorage, ref, uploadBytesResumable, getDownloadURL } from "firebase/
 import { storage } from "../../firebase";
 import { updateMovie } from "../../context/movieContext/apiCalls";
 import { MovieContext } from "../../context/movieContext/MovieContext";
+import { useNavigate } from 'react-router-dom';
 
 export default function Product() {
     const location = useLocation();
     const movie = location.state;
+    const navigate = useNavigate();
 
     const [updatedMovie, setUpdatedMovie] = useState(movie);
     const [img, setImg] = useState(movie.img);
@@ -73,6 +75,7 @@ export default function Product() {
     const handleSubmit = (e) => {
         e.preventDefault();
         updateMovie(updatedMovie, dispatch);
+        navigate('/movies');
     }
 
     return (
@@ -126,6 +129,7 @@ export default function Product() {
                         <input type="text" placeholder={movie.limit} name="limit" onChange={handleChange} />
                         <label>Is Series?</label>
                         <select id="isSeries" className="select" onChange={handleChange}>
+                            <option >Select</option>
                             <option value="true">Yes</option>
                             <option value="false">No</option>
                         </select>

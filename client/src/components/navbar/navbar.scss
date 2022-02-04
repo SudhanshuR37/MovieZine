@@ -18,6 +18,16 @@
         .navbar__container__left{
             display: flex;
             align-items: center;
+
+            .navbar__container__left__pages{
+                display: flex;
+                align-items: center;
+
+                .navbar__container__left__pages__icon{
+                    margin-right: 5px;
+                }
+            }
+
             img{
                 height: 80px;
                 width: 80px;

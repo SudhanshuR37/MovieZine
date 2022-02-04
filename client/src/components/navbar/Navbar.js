@@ -29,29 +29,29 @@ const Navbar = () => {
                         <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="MovieZine logo" ></img>
                     </Link>
                     <Link to="/" className="link">
-                        <span>
-                            <HomeIcon></HomeIcon>
+                        <span className="navbar__container__left__pages">
+                            <HomeIcon className="navbar__container__left__pages__icon"></HomeIcon>
                             Home
                         </span>
                     </Link>
                     <Link to="/series" className="link">
-                        <span>
-                            <LiveTvIcon></LiveTvIcon>
+                        <span className="navbar__container__left__pages">
+                            <LiveTvIcon className="navbar__container__left__pages__icon"></LiveTvIcon>
                             TV Shows
                         </span>
                     </Link>
                     <Link to="/movies" className="link">
-                        <span>
-                            <MovieIcon></MovieIcon>
+                        <span className="navbar__container__left__pages">
+                            <MovieIcon className="navbar__container__left__pages__icon"></MovieIcon>
                             Movies
                         </span>
                     </Link>
-                    <span>
-                        <AssignmentTurnedInIcon></AssignmentTurnedInIcon>
+                    <span className="navbar__container__left__pages">
+                        <AssignmentTurnedInIcon className="navbar__container__left__pages__icon"></AssignmentTurnedInIcon>
                         Recently Added
                     </span>
-                    <span>
-                        <AddIcon></AddIcon>
+                    <span className="navbar__container__left__pages">
+                        <AddIcon className="navbar__container__left__pages__icon"></AddIcon>
                         My List
                     </span>
                 </div>

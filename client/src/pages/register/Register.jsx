@@ -51,7 +51,9 @@ const Register = () => {
                 </form>)}
                 <div className="register__container__signIn">
                     <p>Already have an account? Hit Sign in below!</p>
-                    <button className='register__top__wrapper__logo__signInButton'>Sign In</button>
+                    <Link to='/login'>
+                        <button className='register__top__wrapper__logo__signInButton'>Sign In</button>
+                    </Link>
                 </div>
             </div>
         </div>

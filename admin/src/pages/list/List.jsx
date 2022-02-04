@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./list.css";
 import { Publish } from "@mui/icons-material";
 import { useState, useContext, useEffect } from 'react'
@@ -12,6 +12,7 @@ import { updateList } from "../../context/listContext/apiCalls"
 export default function List() {
     const location = useLocation();
     const list = location.state;
+    const navigate = useNavigate();
 
     const [updatedList, setUpdatedList] = useState(list);
 
@@ -36,8 +37,8 @@ export default function List() {
     const handleSubmit = (e) => {
         e.preventDefault();
         updateList(updatedList, dispatch);
+        navigate('/lists');
     }
-    console.log(updatedList);
 
     return (
         <div className="product">

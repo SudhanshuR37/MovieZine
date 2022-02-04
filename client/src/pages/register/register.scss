@@ -18,15 +18,6 @@
 			.register__top__wrapper__logo{
 				height: 80px;
 			}
-			.register__top__wrapper__logo__signInButton{
-				background-color: red;
-				border: none;
-				color: white;
-				font-size: 16px;
-				border-radius: 5px;
-				padding: 5px 15px;
-				cursor: pointer;
-			}
 		}
 	}
 	.register__container{
@@ -52,6 +43,26 @@
 		p{
 			font-size: 20px;
 		}
+		.register__container__signIn{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			p{
+				margin-top: 10px;
+			}
+			.register__top__wrapper__logo__signInButton{
+				margin-top: 10px;
+				background-color: red;
+				border: none;
+				color: white;
+				font-size: 16px;
+				border-radius: 5px;
+				padding: 5px 15px;
+				cursor: pointer;
+			}
+		}
+
 		.register__container__input{
 			width: 50%;
 			display: flex;

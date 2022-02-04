@@ -25,7 +25,9 @@ const Navbar = () => {
         <div className={isScrolled ? "navbar scrolled" : "navbar"}>
             <div className="navbar__container">
                 <div className="navbar__container__left">
-                    <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="MovieZine logo" ></img>
+                    <Link to="/" className="link">
+                        <img src={process.env.PUBLIC_URL + '/images/logo.png'} alt="MovieZine logo" ></img>
+                    </Link>
                     <Link to="/" className="link">
                         <span>
                             <HomeIcon></HomeIcon>

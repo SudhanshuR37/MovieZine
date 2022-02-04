@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useRef, useState } from "react";
 import './register.scss'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 const Register = () => {
     const [email, setEmail] = useState("");
@@ -35,7 +35,6 @@ const Register = () => {
             <div className='register__top'>
                 <div className='register__top__wrapper'>
                     <img className='register__top__wrapper__logo' src={process.env.PUBLIC_URL + '/images/logo.png'} alt="MovieZine logo" ></img>
-                    <button className='register__top__wrapper__logo__signInButton' onClick={() => navigate('/login')}>Sign In</button>
                 </div>
             </div>
             <div className='register__container'>
@@ -50,6 +49,10 @@ const Register = () => {
                     <input type='password' placeholder='Enter password' ref={passwordRef}></input>
                     <button className='register__container__input__registerButton' onClick={handleFinish}>Start</button>
                 </form>)}
+                <div className="register__container__signIn">
+                    <p>Already have an account? Hit Sign in below!</p>
+                    <button className='register__top__wrapper__logo__signInButton'>Sign In</button>
+                </div>
             </div>
         </div>
     )

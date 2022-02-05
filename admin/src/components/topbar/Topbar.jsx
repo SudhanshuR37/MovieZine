@@ -31,7 +31,6 @@ const Topbar = () => {
                     <SettingsIcon></SettingsIcon>
                 </div>
                 <img className='topbar__wrapper__topRight__avatar' src='https://lh3.googleusercontent.com/ogw/ADea4I58Inj3DBJziyAs4TN7yW9mM-6fA1hkUz4AmgCiow=s64-c-mo' alt='Profile Pic'></img>
-                {/* <span onClick={() => dispatch(logout())}>Log Out</span> */}
                 <button className='topbar__wrapper__topRight__button' onClick={() => dispatch(logout())}>Log Out</button>
             </div>
         </div>

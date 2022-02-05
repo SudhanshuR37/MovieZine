@@ -25,7 +25,7 @@ mongoose.connect(process.env.MONGO_URL)
     .catch((err) => console.log(err));
 
 app.get('/', (req, res) => {
-    res.send('Hello World!')
+    res.send('Hello World!');
 })
 
 app.use(express.json());

@@ -15,12 +15,13 @@ import { logout } from "../../authContext/AuthAction";
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
-    const { dispatch } = useContext(AuthContext);
+    const { user, dispatch } = useContext(AuthContext);
 
     window.onscroll = () => {
         setIsScrolled(window.scrollY === 0 ? false : true)
         return () => (window.onscroll = null);
     }
+
     return (
         <div className={isScrolled ? "navbar scrolled" : "navbar"}>
             <div className="navbar__container">
@@ -60,7 +61,7 @@ const Navbar = () => {
                     <span>KIDS</span>
                     <CardGiftcardIcon className="navbar__container__right__icon"></CardGiftcardIcon>
                     <NotificationsIcon className="navbar__container__right__icon"></NotificationsIcon>
-                    <img src="https://i1.sndcdn.com/artworks-000119862173-lyc3z2-t500x500.jpg" alt="Profile Pic" ></img>
+                    <img src={user.profilePicture} alt="Profile Pic" ></img>
                     <div className="navbar__container__right__profile">
                         <ArrowDropDownIcon className="navbar__container__right__icon"></ArrowDropDownIcon>
                         <div className="navbar__container__right__profile__options">

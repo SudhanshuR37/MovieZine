@@ -3,6 +3,7 @@ import './featured.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import axios from 'axios';
+import { Link } from 'react-router-dom'
 
 const Featured = ({ type, setGenre }) => {
     const [content, setContent] = useState({});
@@ -23,6 +24,7 @@ const Featured = ({ type, setGenre }) => {
         }
         getRandomMovies();
     }, [type])
+
     return (
         <div className='featured'>
             {
@@ -55,12 +57,14 @@ const Featured = ({ type, setGenre }) => {
                     {content?.description}
                 </span>
                 <div className='featured__info__buttons'>
-                    <button className='featured__info__buttons__play'>
-                        <PlayArrowIcon></PlayArrowIcon>
-                        <span>
-                            Play
-                        </span>
-                    </button>
+                    <Link className='link' to='/watch' state={content}>
+                        <button className='featured__info__buttons__play'>
+                            <PlayArrowIcon></PlayArrowIcon>
+                            <span>
+                                Play
+                            </span>
+                        </button>
+                    </Link>
                     <button className='featured__info__buttons__moreInfo'>
                         <InfoOutlinedIcon></InfoOutlinedIcon>
                         <span>
